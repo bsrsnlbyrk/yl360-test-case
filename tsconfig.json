@@ -1,0 +1,15 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ]
+  },
+  "include": ["./**/*.ts", "./**/*.tsx", "./**/*.vue", "./**/*.js", "./**/*.jsx", "./types/vue-shim.d.ts"],
+}
