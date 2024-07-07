@@ -36,6 +36,7 @@ npm run build
 ```
 
 ## File Structure
+```bash
 .
 ├── assets                    # Stylesheets and SVG files used in the project
 ├── components                # Vue component files along with their corresponding test files.
@@ -44,7 +45,9 @@ npm run build
 ├── server                    # Code that runs on the server
 ├── service                   # Endpoints from which the application fetches data
 ├── store                     # State management for the entire application
-└── types                     # TypeScript definitions used throughout the application
+├── types                     # TypeScript definitions used throughout the application
+└── utils                     # Utility functions used throughout the application
+```
 
 ## Production
  You can check the deployed project on [link](https://yl360-test-case.vercel.app/)
