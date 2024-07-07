@@ -5,8 +5,6 @@ import Button from "@/components/button/index.vue";
 import { useCartStore } from "@/store/cart.js";
 
 const store = useCartStore();
-const { addCart, decreaseCartItem, getCartItemQuantity, removeCartItem } =
-  store;
 const { cartItems } = storeToRefs(store);
 
 const isOpen = ref(false);

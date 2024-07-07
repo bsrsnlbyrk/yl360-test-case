@@ -46,22 +46,8 @@ const cartTotalCost = computed(() =>
         <Counter
           class="basis-0 grow"
           :initialValue="getCartItemQuantity(item)"
-          @decreased="
-            decreaseCartItem({
-              id: item.id,
-              name: item.name,
-              imagePath: item.imagePath,
-              price: item.price,
-            })
-          "
-          @increased="
-            addCart({
-              id: item.id,
-              name: item.name,
-              imagePath: item.imagePath,
-              price: item.price,
-            })
-          "
+          @decreased="decreaseCartItem(item)"
+          @increased="addCart(item)"
         />
         <div
           class="basis-0 grow cursor-pointer text-indigo-700"

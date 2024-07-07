@@ -1,19 +1,12 @@
 import { defineStore } from 'pinia'
-
-type CartItem = {
-    id: number;
-    name: string;
-    imagePath: string;
-    quantity: number;
-    price: number;
-}
+import type { CartItem } from '@/types/app.type'
 
 export const useCartStore = defineStore('cart',  () => {
     const cartItems: Ref<CartItem[]> = ref([]);
 
     const isItemExist = (item: Omit<CartItem, 'quantity'>) => cartItems.value.some(cartItem => cartItem.id === item.id);
 
-    function getCartItemQuantity(item: any) {
+    function getCartItemQuantity(item: Omit<CartItem, 'quantity'>) {
         return cartItems.value.find((cartItem) => cartItem.id === item.id)
           ?.quantity;
       }
@@ -45,9 +38,6 @@ export const useCartStore = defineStore('cart',  () => {
 
     function decreaseCartItem (item: Omit<CartItem, 'quantity'>) {
         const itemQuantity = cartItems.value.find(cartItem => cartItem.id === item.id)?.quantity;
-
-        console.log("decreasing", itemQuantity, cartItems.value, item);
-        
 
         if (itemQuantity) {
             if (itemQuantity > 1) {

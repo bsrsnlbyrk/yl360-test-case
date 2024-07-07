@@ -1,13 +1,6 @@
 import { defineStore } from 'pinia'
 import { fetchBooks } from '@/service/books-service';
-
-type Book = {
-    id: number;
-    title: string;
-    author: string;
-    price: number;
-    coverImageUrl: string;
-  };
+import type { Book } from "@/types/app.type";
 
 export const useBookStore = defineStore('books',  () => {
     const bookList: Ref<Book[]> = ref([]);
@@ -27,7 +20,7 @@ export const useBookStore = defineStore('books',  () => {
         }
     }
     
-    function setBookList (data: any) {
+    function setBookList (data: Book[]) {
         bookList.value = data;
     }
 

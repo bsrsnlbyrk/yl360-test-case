@@ -8,7 +8,7 @@ export default {
 <template>
   <button
     class="px-4 py-2 bg-indigo-700 rounded text-white"
-    @click="$emit('click')"
+    @click="$emit('clicked')"
   >
     <span v-if="text">{{ text }}</span>
     <slot v-else></slot>

@@ -1,15 +1,8 @@
 <script setup lang="ts">
-type Book = {
-  id: number;
-  title: string;
-  author: string;
-  price: number;
-  coverImageUrl: string;
-};
-
 import SearchInput from "@/components/input/search-input.vue";
 import BookListCard from "@/components/card/book-list-card/index.vue";
 import { useBookStore } from "@/store/books";
+import type { Book } from "@/types/app.type";
 
 const store = useBookStore();
 const { bookList } = storeToRefs(store);

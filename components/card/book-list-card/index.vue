@@ -4,17 +4,11 @@ import Counter from "@/components/counter/index.vue";
 import Button from "@/components/button/index.vue";
 import Decrease from "@/assets/svg/decrease-circle.svg";
 import Increase from "@/assets/svg/increase-circle.svg";
-
-type Book = {
-  id: number;
-  title: string;
-  author: string;
-  price: number;
-  coverImageUrl: string;
-};
+import ConvertBookToCartItem from "@/utils/convert-book-to-cart-item";
+import type { Book } from "@/types/app.type";
 
 export default defineComponent({
-  props: { book: { type: Object, required: true } },
+  props: { book: { type: Object as () => Book, required: true } },
   components: {
     Decrease,
     Increase,
@@ -25,20 +19,11 @@ export default defineComponent({
     const store = useCartStore();
     const { addCart, decreaseCartItem, getCartItemQuantity } = store;
 
-    function handleButtonClick(book: any) {
-      addCart({
-        id: book.id,
-        name: book.title,
-        imagePath: book.coverImageUrl,
-        price: book.price,
-      });
-    }
-
     return {
       addCart,
       decreaseCartItem,
       getCartItemQuantity,
-      handleButtonClick,
+      ConvertBookToCartItem,
     };
   },
 });
@@ -70,30 +55,16 @@ export default defineComponent({
       text="Add to Cart"
       id="addToCart"
       class="w-full mt-4 hover:bg-indigo-500"
-      v-if="!getCartItemQuantity(book)"
-      @click="handleButtonClick(book)"
+      v-if="!getCartItemQuantity(ConvertBookToCartItem(book))"
+      @clicked="addCart(ConvertBookToCartItem(book))"
     >
     </Button>
     <div v-else class="flex items-center gap-x-2 mt-4">
       <Counter
         class="h-10"
-        :initialValue="getCartItemQuantity(book)"
-        @decreased="
-          decreaseCartItem({
-            id: book.id,
-            name: book.title,
-            imagePath: book.coverImageUrl,
-            price: book.price,
-          })
-        "
-        @increased="
-          addCart({
-            id: book.id,
-            name: book.title,
-            imagePath: book.coverImageUrl,
-            price: book.price,
-          })
-        "
+        :initialValue="getCartItemQuantity(ConvertBookToCartItem(book))"
+        @decreased="decreaseCartItem(ConvertBookToCartItem(book))"
+        @increased="addCart(ConvertBookToCartItem(book))"
       />
     </div>
   </div>
