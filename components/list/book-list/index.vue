@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchInput from "@/components/input/search-input.vue";
+import SearchInput from "@/components/input/search-input/index.vue";
 import BookListCard from "@/components/card/book-list-card/index.vue";
 import { useBookStore } from "@/store/books";
 import type { Book } from "@/types/app.type";

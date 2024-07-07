@@ -23,6 +23,7 @@ const cartTotalCost = computed(() =>
         :key="item.id"
         class="flex items-center justify-between gap-x-4 w-full"
       >
+        <!-- Used object element because of the broken img links, so that we can show a fallback image -->
         <object
           :data="item.imagePath"
           type="image/jpg"
@@ -38,7 +39,6 @@ const cartTotalCost = computed(() =>
             class="object-cover"
           />
         </object>
-        <!-- <img :src="item.imagePath" width="40" height="60" class="rounded" /> -->
         <span class="basis-0 grow text-ellipsis line-clamp-1">{{
           item.name
         }}</span>
