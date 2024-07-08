@@ -19,6 +19,6 @@ describe('Cart', () => {
     const store = useCartStore();
     store.getCartItemQuantity = vi.fn().mockReturnValue(2);
 
-    expect(store.getCartItemQuantity(wrapper.props().book)).toBe(2);
+    expect(store.getCartItemQuantity(store.cartItems[0])).toBe(2);
   });
 });

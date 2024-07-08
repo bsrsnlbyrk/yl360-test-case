@@ -12,6 +12,7 @@ describe('SearchInput', () => {
     await inputElement.setValue('George Orwell');
 
     // Assert that model value is updated
+    // @ts-ignore
     expect(wrapper.vm.model).toBe('George Orwell');
   });
 });

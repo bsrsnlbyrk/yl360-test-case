@@ -18,7 +18,7 @@ describe('BookList', () => {
           SearchInput,
         },
       }})
-    const searchedBooksSpy = vi.spyOn(wrapper.vm, 'searchedBooks');
+    const searchedBooksSpy = vi.spyOn(wrapper.vm as any, 'searchedBooks');
     const store = useBookStore()
 
     const searchInputWrapper = await wrapper.findComponent(SearchInput)
